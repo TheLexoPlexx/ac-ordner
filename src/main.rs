@@ -63,7 +63,12 @@ fn main() {
             std::fs::create_dir(&month_folder).expect("Failed to create month folder.");
         }
 
-        let week_folder = month_folder.join(format!("KW{}", item.iso_week().week()));
+        let week = item.iso_week().week();
+        let mut leading_zero = "";
+        if week < 10 {
+            leading_zero = "0";
+        }
+        let week_folder = month_folder.join(format!("KW{leading_zero}{}", item.iso_week().week()));
         if !week_folder.exists() {
             std::fs::create_dir(&week_folder).expect("Failed to create week folder.");
         }
