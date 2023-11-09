@@ -57,7 +57,7 @@ fn main() {
         let month_folder = year_folder.join(format!(
             "{} - {}",
             item.month(),
-            translate_months(Month::try_from(u8::try_from(date.month()).unwrap()).unwrap())
+            translate_months(Month::try_from(u8::try_from(item.month()).unwrap()).unwrap())
         ));
         if !month_folder.exists() {
             std::fs::create_dir(&month_folder).expect("Failed to create month folder.");
